@@ -25,6 +25,6 @@ public class Player : MonoBehaviour
         objectIndex = other.GetComponent<Interactable>().Index;
         Destroy(other);
 
-        GameManager.Instance.ObjectRetrieved();
+        GameManager.Instance.ObjectRetrieved(objectIndex);
     }
 }

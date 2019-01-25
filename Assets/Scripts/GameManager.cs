@@ -30,9 +30,9 @@ public class GameManager : MonoBehaviour
         - Change World State (Drey)
         - Unlock Level
      */
-    public void ObjectRetrieved()
+    public void ObjectRetrieved(int index)
     {
-        level.Unlock();
+        level.Unlock(index);
     }
  
     public void ObjectPickup()
