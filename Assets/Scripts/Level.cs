@@ -1,11 +1,21 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Level : MonoBehaviour
 {
     public int stages;
     public GameObject[] Blockage;
+
+    [SerializeField]
+    private CameraMovement cam;
+    
+    [SerializeField]
+    private Transform player;
+
+    private void Start()
+    {
+        
+    }
 
     //TODO Unblock path to next area
     public void Unlock(int level)
@@ -15,6 +25,7 @@ public class Level : MonoBehaviour
         {
             UnlockStage2();
             Destroy(Blockage[level]);
+            UnlockStage(level);
         }
         else if(level == 1)
         {
@@ -27,6 +38,32 @@ public class Level : MonoBehaviour
             Destroy(Blockage[level]); ;
         }
     }
+    public void UnlockStage(int stage)
+    {
+        if(stage > Blockage.Length)
+        {
+            Debug.Log("incorrect stage");
+            return;
+        }
+        StartCoroutine(AnimateAndDestroy(stage));
+    }
+
+    IEnumerator AnimateAndDestroy(int level)
+    {
+        if (Blockage[level] != null)
+        {
+            cam.target = Blockage[level].transform;
+        }
+        yield return new WaitForSeconds(1f);
+        //play animation
+        yield return new WaitForSeconds(1f); // wait until length of object animation
+        Blockage[level].SetActive(false);
+        if(player != null)
+        {
+            cam.target = player.transform;
+        }
+    }
+
 
     void UnlockStage2()
     {

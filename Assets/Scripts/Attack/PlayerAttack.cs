@@ -23,8 +23,7 @@ public class PlayerAttack : MonoBehaviour
                 camAnim.SetTrigger("Shake");
                 Collider2D[] propsToDamage = Physics2D.OverlapCircleAll(AttackerPos.position, damageRange, destructibles);
                 for (int i = 0; i < propsToDamage.Length; i++)
-                {
-                    
+                {                    
                     propsToDamage[i].GetComponent<DestructibleProps>().TakeDamage(damage);
                 }
 
