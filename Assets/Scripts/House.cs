@@ -29,17 +29,19 @@ public class House : MonoBehaviour
 
         //TODO Unlock conditions
         GameManager.Instance.UnlockLevel();
-
-        // string text = "";
-        // foreach(bool b in checkList)
-        //     text += b.ToString() + " ";
-
-        // print(text);
     }
 
-    //TODO Update house
+    //TODO Update house appearance
     private void UpdateHouse(int part)
     {
+        bool isComplete = true;
+        foreach(bool b in checkList)
+            if(!b) isComplete = false;
 
+        if(isComplete)
+        {
+            //TODO when house is completed
+            GameManager.Instance.HouseCompleted();
+        }
     }
 }

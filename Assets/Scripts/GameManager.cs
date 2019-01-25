@@ -36,9 +36,10 @@ public class GameManager : MonoBehaviour
         int levelNumber = currentLevel++;
         level.Unlock(levelNumber);
     }
- 
-    public void ObjectPickup()
+
+    //TODO when house is completed
+    public void HouseCompleted()
     {
-        
+
     }
 }
