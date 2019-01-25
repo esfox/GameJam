@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    private int currentLevel = 0;
     private Level level;
 
     void Start()
@@ -30,9 +31,10 @@ public class GameManager : MonoBehaviour
         - Change World State (Drey)
         - Unlock Level
      */
-    public void ObjectRetrieved(int index)
+    public void UnlockLevel()
     {
-        level.Unlock(index);
+        int levelNumber = currentLevel++;
+        level.Unlock(levelNumber);
     }
  
     public void ObjectPickup()

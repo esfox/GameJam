@@ -24,13 +24,22 @@ public class House : MonoBehaviour
         Player player = other.GetComponent<Player>();
         if(!player) return;
 
-        int index = player.ObjectIndex;
-        checkList[index] = true;
+        checkList[player.ObjectIndex] = true;
+        UpdateHouse(player.ObjectIndex);
 
-        string text = "";
-        foreach(bool b in checkList)
-            text += b.ToString() + " ";
+        //TODO Unlock conditions
+        GameManager.Instance.UnlockLevel();
 
-        print(text);
+        // string text = "";
+        // foreach(bool b in checkList)
+        //     text += b.ToString() + " ";
+
+        // print(text);
+    }
+
+    //TODO Update house
+    private void UpdateHouse(int part)
+    {
+
     }
 }
