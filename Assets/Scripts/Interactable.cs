@@ -15,10 +15,4 @@ public class Interactable : MonoBehaviour
     {
         GetComponent<Collider2D>().isTrigger = true;
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.tag == Tags.Player)
-            Destroy(gameObject);
-    }
 }

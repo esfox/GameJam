@@ -5,17 +5,18 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int objectCount;
-    [SerializeField] private bool[] checkList;
-
-    void Start()
+    private int objectIndex;
+    public int ObjectIndex
     {
-        checkList = new bool[objectCount];
+        get { return objectIndex; }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag(Tags.Object))
-            checkList[other.GetComponent<Interactable>().Index] = true;
+        {
+            objectIndex = other.GetComponent<Interactable>().Index;
+            Destroy(other.gameObject);
+        }
     }
 }

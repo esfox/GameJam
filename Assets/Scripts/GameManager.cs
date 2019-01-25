@@ -19,9 +19,12 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    [SerializeField] private House house;
+
+    //TODO Change World State
     public void ObjectRetrieved()
     {
-
+        
     }
 
     public void ObjectPickup()

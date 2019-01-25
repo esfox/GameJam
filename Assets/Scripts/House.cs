@@ -2,24 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [RequireComponent(typeof(Collider2D))]
 public class House : MonoBehaviour
 {
-    
+    [SerializeField] private int objectCount;
+    [SerializeField] private bool[] checkList;
+
     void Start()
     {
-        
+        checkList = new bool[objectCount];
     }
 
-    
-    void Update()
+    void OnTriggerEnter2D(Collider2D other)
     {
-       
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        GameManager.Instance.ObjectRetrieved();
+        if(other.CompareTag(Tags.Player))
+            checkList[other.GetComponent<Player>().ObjectIndex] = true;
     }
 }
