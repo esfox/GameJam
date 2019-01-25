@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     #region Singleton
 
     private static GameManager instance;
-    public GameManager Instance
+    public static GameManager Instance
     {
         get { return instance; }
     }
@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+    public void ObjectRetrieved()
+    {
+
+    }
 
     public void ObjectPickup()
     {
