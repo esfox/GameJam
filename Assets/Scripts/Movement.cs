@@ -17,14 +17,14 @@ public class Movement : MonoBehaviour {
     //public FloatValue currentHealth;
     private Rigidbody2D rb;
     private Vector3 change;
-    //Animator anim;
+    Animator anim;
     //public Signal playerHealthSignal;
     //public AudioManager soundFX;
 
     // Use this for initialization
     void Start() {
         currentStatus = PlayerStatus.walk;
-        
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         
     }
@@ -35,13 +35,9 @@ public class Movement : MonoBehaviour {
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
-        MoveCharacter();
+        UpdateAnimationAndMove();
     }
-    
-    
-    
-    
-    
+       
     void MoveCharacter()
     {            
         change.Normalize();
@@ -49,11 +45,27 @@ public class Movement : MonoBehaviour {
             transform.position + change * speed * Time.deltaTime);        
     }
 
-    
-    
-    
+    void UpdateAnimationAndMove()
+    {
 
-    
+        if (change != Vector3.zero)
+        {
+            MoveCharacter();
+            anim.SetFloat("moveX", change.x);
+            anim.SetFloat("moveY", change.y);
+            anim.SetBool("isMoving", true);
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
+        }
+    }
+
+
+
+
+
+
 
 }
 
