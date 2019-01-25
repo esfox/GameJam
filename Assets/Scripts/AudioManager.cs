@@ -66,7 +66,7 @@ public class AudioManager : MonoBehaviour
     //plays a random track from an audio array
     private void playRandom (AudioSource[] audioArray)
     {
-        currentlyPlaying = audioArray[Random.Range(0, audioArray.length - 1)];
+        currentlyPlaying = audioArray[Random.Range(0, audioArray.Length - 1)];
         currentlyPlaying.Play();
     }
 }
