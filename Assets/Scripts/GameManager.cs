@@ -21,7 +21,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private House house;
 
-    //TODO Change World State
+    /*  TODO
+        - Change World State (Drey)
+        - Unlock Level
+     */
     public void ObjectRetrieved()
     {
         

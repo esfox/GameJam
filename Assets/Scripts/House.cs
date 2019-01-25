@@ -6,7 +6,7 @@ using UnityEngine;
 public class House : MonoBehaviour
 {
     [SerializeField] private int objectCount;
-    [SerializeField] private bool[] checkList;
+    private bool[] checkList;
 
     void Start()
     {
@@ -16,6 +16,21 @@ public class House : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag(Tags.Player))
-            checkList[other.GetComponent<Player>().ObjectIndex] = true;
+            CheckList(other.gameObject);
+    }
+
+    private void CheckList(GameObject other)
+    {   
+        Player player = other.GetComponent<Player>();
+        if(!player) return;
+
+        int index = player.ObjectIndex;
+        checkList[index] = true;
+
+        string text = "";
+        foreach(bool b in checkList)
+            text += b.ToString() + " ";
+
+        print(text);
     }
 }

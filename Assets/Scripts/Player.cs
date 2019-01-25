@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Player : MonoBehaviour
 {
-    private int objectIndex;
+    private int objectIndex = -1;
     public int ObjectIndex
     {
         get { return objectIndex; }
@@ -14,9 +14,17 @@ public class Player : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag(Tags.Object))
-        {
-            objectIndex = other.GetComponent<Interactable>().Index;
-            Destroy(other.gameObject);
-        }
+            GetObject(other.gameObject);
+    }
+
+    private void GetObject(GameObject other)
+    {
+        Interactable interactable = other.GetComponent<Interactable>();
+        if(!interactable) return;
+
+        objectIndex = other.GetComponent<Interactable>().Index;
+        Destroy(other);
+
+        GameManager.Instance.ObjectRetrieved();
     }
 }
