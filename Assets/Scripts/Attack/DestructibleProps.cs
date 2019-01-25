@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestructibleProps : MonoBehaviour
 {
     public int health;
-   
+    private Canvas HealthCanvas;
     private void Start()
     {
         
