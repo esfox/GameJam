@@ -19,7 +19,12 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    [SerializeField] private House house;
+    private Level level;
+
+    void Start()
+    {
+        level = GetComponent<Level>();
+    }
 
     /*  TODO
         - Change World State (Drey)
@@ -27,9 +32,9 @@ public class GameManager : MonoBehaviour
      */
     public void ObjectRetrieved()
     {
-        
+        level.Unlock();
     }
-
+ 
     public void ObjectPickup()
     {
         
