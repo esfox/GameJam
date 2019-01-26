@@ -40,6 +40,6 @@ public class GameManager : MonoBehaviour
     //TODO when house is completed
     public void HouseCompleted()
     {
-
+        
     }
 }

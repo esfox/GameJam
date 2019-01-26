@@ -19,10 +19,10 @@ public class Player : MonoBehaviour
 
     private void GetObject(GameObject other)
     {
-        Interactable interactable = other.GetComponent<Interactable>();
-        if(!interactable) return;
+        Part part = other.GetComponent<Part>();
+        if(!part) return;
 
-        objectIndex = other.GetComponent<Interactable>().Index;
+        objectIndex = other.GetComponent<Part>().Number;
         Destroy(other);
     }
 }
