@@ -4,12 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class RoomMove : MonoBehaviour {
-
-
-    
+        
     public Transform newPos;
-    
-    
+    public Text place;
+    public GameObject textHolder;
     public string placeName;    
 	// Use this for initialization
 	void Start () {
@@ -23,21 +21,20 @@ public class RoomMove : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag(Tags.Player))
         {
             
             collision.transform.position = newPos.position;
-            
-                //StartCoroutine(placeNameCo());
+            StartCoroutine(placeNameCo());
           
         }
     }
-    /*
+    
+    //play automated animation on area change
     private IEnumerator placeNameCo() {
-        text.SetActive(true);
-        placeText.text = placeName;
+        textHolder.SetActive(true);
+        place.text = placeName;
         yield return new WaitForSeconds(4f);
-        text.SetActive(false);
-
-    }*/
+        textHolder.SetActive(false);
+    }
 }
