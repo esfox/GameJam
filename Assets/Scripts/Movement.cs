@@ -12,6 +12,8 @@ public enum PlayerStatus
 
 public class Movement : MonoBehaviour {
 
+    public Vector2[] AttackRangeLoc;
+
     public PlayerStatus currentStatus;
     public float speed;
     //public FloatValue currentHealth;
@@ -65,6 +67,17 @@ public class Movement : MonoBehaviour {
         {
             anim.SetBool("isMoving", false);
             currentStatus = PlayerStatus.idle;
+        }
+    }
+
+    void AttackRangeFlipper()
+    {
+        if (change.x==1)
+        {
+
+        }else if (change.y==1)
+        {
+
         }
     }
 
