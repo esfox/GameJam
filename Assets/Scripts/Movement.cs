@@ -7,7 +7,8 @@ public enum PlayerStatus
 {
     walk,    
     interact,    
-    idle
+    idle,
+    attack
 }
 
 public class Movement : MonoBehaviour {
@@ -39,7 +40,7 @@ public class Movement : MonoBehaviour {
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
-        if(currentStatus == PlayerStatus.interact)
+        if(currentStatus == PlayerStatus.interact && currentStatus == PlayerStatus.attack)
         {
 
         } else
