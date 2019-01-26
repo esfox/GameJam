@@ -57,6 +57,7 @@ public class Level : MonoBehaviour
         player.GetComponent<Movement>().currentStatus = PlayerStatus.interact;
         yield return new WaitForSeconds(1f);
         //play animation
+        //Blockage[level].GetComponent<Animator>().Se
         yield return new WaitForSeconds(1f); // wait until length of object animation
         Blockage[level].SetActive(false); //disable blockage
         player.GetComponent<Movement>().currentStatus = PlayerStatus.walk;
