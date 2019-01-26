@@ -25,8 +25,7 @@ public class RoomMove : MonoBehaviour {
         {
             
             collision.transform.position = newPos.position;
-            StartCoroutine(placeNameCo());
-          
+            StartCoroutine(placeNameCo());          
         }
     }
     
