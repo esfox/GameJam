@@ -54,13 +54,15 @@ public class Level : MonoBehaviour
         {
             cam.target = Blockage[level].transform;
         }
+        player.GetComponent<Movement>().currentStatus = PlayerStatus.interact;
         yield return new WaitForSeconds(1f);
         //play animation
         yield return new WaitForSeconds(1f); // wait until length of object animation
-        Blockage[level].SetActive(false);
-        if(player != null)
+        Blockage[level].SetActive(false); //disable blockage
+        player.GetComponent<Movement>().currentStatus = PlayerStatus.walk;
+        if (player != null)
         {
-            cam.target = player.transform;
+            cam.target = player.transform; // transfer target of camera to player.
         }
     }
 

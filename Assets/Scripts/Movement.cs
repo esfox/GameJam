@@ -35,29 +35,36 @@ public class Movement : MonoBehaviour {
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
-        UpdateAnimationAndMove();
+        if(currentStatus == PlayerStatus.interact)
+        {
+
+        } else
+        {
+            UpdateAnimationAndMove();
+        }
+        
     }
        
     void MoveCharacter()
     {            
         change.Normalize();
-                rb.MovePosition(
-            transform.position + change * speed * Time.deltaTime);        
+        rb.MovePosition(transform.position + change * speed * Time.deltaTime);        
     }
 
     void UpdateAnimationAndMove()
     {
-
         if (change != Vector3.zero)
         {
             MoveCharacter();
             anim.SetFloat("moveX", change.x);
             anim.SetFloat("moveY", change.y);
             anim.SetBool("isMoving", true);
+            currentStatus = PlayerStatus.walk;
         }
         else
         {
             anim.SetBool("isMoving", false);
+            currentStatus = PlayerStatus.idle;
         }
     }
 
