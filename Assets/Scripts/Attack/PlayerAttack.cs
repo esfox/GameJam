@@ -11,7 +11,14 @@ public class PlayerAttack : MonoBehaviour
    public float damageRange;
    public LayerMask destructibles;
    public int damage;
-   public Animator camAnim;
+    public Animator camAnim;
+
+    private Movement playerMove;
+
+    private void Start()
+    {
+        playerMove = FindObjectOfType<Movement>();
+    }
 
     void Update()
     {
@@ -21,6 +28,7 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 camAnim.SetTrigger("Shake");
+                playerMove.currentStatus = PlayerStatus.attack;
                 Collider2D[] propsToDamage = Physics2D.OverlapCircleAll(AttackerPos.position, damageRange, destructibles);
                 for (int i = 0; i < propsToDamage.Length; i++)
                 {                    
@@ -29,6 +37,7 @@ public class PlayerAttack : MonoBehaviour
 
                 Debug.Log("ATTACK");
                 AttackDelay = StartAttackDelay;
+                playerMove.currentStatus = PlayerStatus.idle;
             }
             
         }
