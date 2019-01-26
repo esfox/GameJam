@@ -5,12 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class House : MonoBehaviour
 {
-    [SerializeField] private int objectCount;
+    [SerializeField] private GameObject[] parts;
     private bool[] checkList;
 
     void Start()
     {
-        checkList = new bool[objectCount];
+        checkList = new bool[parts.Length];
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -31,9 +31,12 @@ public class House : MonoBehaviour
         GameManager.Instance.UnlockLevel();
     }
 
-    //TODO Update house appearance
     private void UpdateHouse(int part)
     {
+        //TODO Update house appearance
+        
+        parts[part].SetActive(true);
+
         bool isComplete = true;
         foreach(bool b in checkList)
             if(!b) isComplete = false;

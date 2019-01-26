@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class Interactable : MonoBehaviour
+public class Part : MonoBehaviour
 {
-    [SerializeField] private int index;
-    public int Index
+    [SerializeField] private int number;
+    public int Number
     {
-        get { return index; }
+        get { return number; }
     }
 
     void Start()
