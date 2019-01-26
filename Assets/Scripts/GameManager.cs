@@ -34,12 +34,12 @@ public class GameManager : MonoBehaviour
     public void UnlockLevel()
     {
         int levelNumber = currentLevel++;
-        level.Unlock(levelNumber);
+        //level.Unlock(levelNumber);
     }
 
     //TODO when house is completed
     public void HouseCompleted()
     {
-        
+
     }
 }
