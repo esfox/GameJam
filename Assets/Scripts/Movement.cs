@@ -12,7 +12,9 @@ public enum PlayerStatus
 
 public class Movement : MonoBehaviour {
 
-    public Vector2[] AttackRangeLoc;
+    public Transform[] AttackRangeLoc;
+    public Transform AttackRange;
+    //private Vector2 AttackRangeDef;
 
     public PlayerStatus currentStatus;
     public float speed;
@@ -28,7 +30,7 @@ public class Movement : MonoBehaviour {
         currentStatus = PlayerStatus.walk;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        
+        //AttackRangeDef = AttackRange.position;
     }
 
     // Update is called once per frame
@@ -44,7 +46,7 @@ public class Movement : MonoBehaviour {
         {
             UpdateAnimationAndMove();
         }
-        
+        AttackRangeFlipper();
     }
        
     void MoveCharacter()
@@ -72,13 +74,20 @@ public class Movement : MonoBehaviour {
 
     void AttackRangeFlipper()
     {
-        if (change.x==1)
+        if (change.x == 1)
         {
-
-        }else if (change.y==1)
+            AttackRange.position = AttackRangeLoc[0].position;
+        } else if (change.x == -1) {
+            AttackRange.position = AttackRangeLoc[1].position;
+        } else if (change.y == 1)
         {
-
+            AttackRange.position = AttackRangeLoc[2].position;
         }
+        else if (change.y ==-1)
+        {
+            AttackRange.position = AttackRangeLoc[3].position;
+        }
+       
     }
 
 
