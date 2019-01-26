@@ -40,6 +40,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource nightShiftAudio;
     [SerializeField] private AudioSource footstepsAudio;
     [SerializeField] private AudioSource stormAudio;
+    [SerializeField] private AudioSource attackAudio;
 
     //Stores Currently Playing BGM
     private AudioSource currentlyPlaying = null;
@@ -64,7 +65,8 @@ public class AudioManager : MonoBehaviour
         Night_Shift,
         Footsteps,
         Metal,
-        Storm
+        Storm,
+        Attack
     }
 
     //Takes an AudioType as a parameter
@@ -122,11 +124,14 @@ public class AudioManager : MonoBehaviour
             case SFX_Type.Footsteps:
                 sfx = footstepsAudio;
                 break;
-            case SFX_Type.Metal;
+            case SFX_Type.Metal:
                 sfx = metalAudio[Random.Range(0, metalAudio.Length - 1)];
                 break;
             case SFX_Type.Storm:
                 sfx = stormAudio;
+                break;
+            case SFX_Type.Attack:
+                sfx = attackAudio;
                 break;
         }
 
