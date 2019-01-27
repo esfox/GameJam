@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class TextBox : MonoBehaviour
 {
     public GameObject textBox;
-    Text text;
-    public bool isActive;
+    public Text text;
+    public string Dialogue;
+    
     // Start is called before the first frame update
     void Start()
     {
-        isActive = false;
+        textBox.SetActive(false);
+    
     }
 
     // Update is called once per frame
@@ -22,16 +24,20 @@ public class TextBox : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.CompareTag(Tags.Player) && 
-            Input.GetKeyDown(KeyCode.E) && !isActive)
+        if(collision.CompareTag(Tags.Player) && Input.GetKeyDown(KeyCode.E) && !textBox.activeInHierarchy)
         {
             textBox.SetActive(true);
-            isActive = true;
+            text.text = Dialogue;            
         }
-        else if (Input.GetKeyDown(KeyCode.E) && !isActive)
+        
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag(Tags.Player) && textBox.activeInHierarchy)
         {
             textBox.SetActive(false);
-            isActive = false;
         }
+
+
     }
 }

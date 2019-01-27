@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         level = GetComponent<Level>();
+        audioManager.PlayBGM(AudioManager.AudioType.Calm);
     }
 
     /*  TODO

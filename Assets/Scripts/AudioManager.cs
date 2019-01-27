@@ -151,21 +151,21 @@ public class AudioManager : MonoBehaviour
             sfx.Stop();
     }
 
-    //Stops Audio
-    public void StopAudio ()
-    {
-        currentlyPlaying.Stop();
-    }
-
     private void playSpecific (AudioSource audio)
     {
-        audio.Play();
+        if(currentlyPlaying)
+            currentlyPlaying.Stop();
+
         currentlyPlaying = audio;
+        currentlyPlaying.Play();
     }
 
     //plays a random track from an audio array
     private void playRandom (AudioSource[] audioArray)
     {
+        if (currentlyPlaying)
+            currentlyPlaying.Pause();
+
         currentlyPlaying = audioArray[Random.Range(0, audioArray.Length - 1)];
         currentlyPlaying.Play();
     }

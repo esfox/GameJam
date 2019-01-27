@@ -50,6 +50,9 @@ public class RoomMove : MonoBehaviour {
                 case "Batson":
                     PlayMusic(AudioManager.AudioType.Wetlands);
                     break;
+                case "Tahanan":
+                    PlayMusic(AudioManager.AudioType.Calm);
+                    break;
             }
         }
     }
