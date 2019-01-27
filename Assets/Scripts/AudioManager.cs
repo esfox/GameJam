@@ -31,6 +31,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource mazeAudio;
     [SerializeField] private AudioSource ruinsAudio;
     [SerializeField] private AudioSource wetLandsAudio;
+    [SerializeField] private AudioSource dramaticAudio;
+    [SerializeField] private AudioSource lossAudio;
 
     //SFX
     [SerializeField] private AudioSource[] metalAudio;
@@ -52,10 +54,12 @@ public class AudioManager : MonoBehaviour
         Maze,
         Ruins,
         Wetlands,
+        Dramatic,
+        Loss,
         Calm,
         Desperation,  
         Hope,
-        Panic,
+        Panic
     };
 
     public enum SFX_Type
@@ -89,6 +93,12 @@ public class AudioManager : MonoBehaviour
                 break;
             case AudioType.Wetlands:
                 playSpecific(wetLandsAudio);
+                break;
+            case AudioType.Dramatic:
+                playSpecific(dramaticAudio);
+                break;
+            case AudioType.Loss:
+                playSpecific(lossAudio);
                 break;
             case AudioType.Calm:
                 playRandom(calmAudio);
