@@ -8,10 +8,14 @@ public class RoomMove : MonoBehaviour {
     public Transform newPos;
     public Text place;
     public GameObject textHolder;
-    public string placeName;    
+    public string placeName;
+    CameraMovement cam;
+    public Vector2 minPos;
+    public Vector2 maxPos;
 	// Use this for initialization
 	void Start () {
-        
+        cam = FindObjectOfType<CameraMovement>();
+        textHolder.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -25,7 +29,9 @@ public class RoomMove : MonoBehaviour {
         {
             
             collision.transform.position = newPos.position;
-            StartCoroutine(placeNameCo());          
+            StartCoroutine(placeNameCo());
+            cam.maxPos = this.maxPos;
+            cam.minPos = this.minPos;
         }
     }
     
