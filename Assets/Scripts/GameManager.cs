@@ -19,12 +19,19 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    [SerializeField] private AudioManager audioManager;
+    public AudioManager AudioManager
+    {
+        get { return audioManager; }
+    }
+
     private int currentLevel = 0;
     private Level level;
 
     void Start()
     {
         level = GetComponent<Level>();
+        audioManager.PlayBGM(AudioManager.AudioType.Calm);
     }
 
     /*  TODO
@@ -40,6 +47,6 @@ public class GameManager : MonoBehaviour
     //TODO when house is completed
     public void HouseCompleted()
     {
-
+        print("PANALO");
     }
 }
