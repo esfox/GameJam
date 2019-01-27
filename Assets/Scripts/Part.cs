@@ -13,6 +13,7 @@ public class Part : MonoBehaviour
 
     void Start()
     {
+        gameObject.tag = Tags.Object;
         GetComponent<Collider2D>().isTrigger = true;
     }
 }

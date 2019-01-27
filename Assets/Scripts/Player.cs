@@ -10,10 +10,9 @@ public class Player : MonoBehaviour
     {
         get { return objectIndex; }
     }
-
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag(Tags.Object))
+        if (other.CompareTag(Tags.Object))
             GetObject(other.gameObject);
     }
 

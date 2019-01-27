@@ -8,9 +8,16 @@ public class House : MonoBehaviour
     [SerializeField] private GameObject[] parts;
     private bool[] checkList;
 
+    [SerializeField] private Sprite completedHouse;
+    private SpriteRenderer renderer;
+
+    private int partsCompleted = 0;
+
     void Start()
     {
+        gameObject.tag = Tags.House;
         checkList = new bool[parts.Length];
+        renderer = GetComponent<SpriteRenderer>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -34,7 +41,11 @@ public class House : MonoBehaviour
     private void UpdateHouse(int part)
     {
         //TODO Update house appearance
-        
+
+        partsCompleted++;
+        if (partsCompleted == 2)
+            renderer.sprite = completedHouse;
+
         parts[part].SetActive(true);
 
         bool isComplete = true;
