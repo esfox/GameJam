@@ -22,7 +22,8 @@ public class TextBox : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag(Tags.Player) && Input.GetKeyDown(KeyCode.E) && !isActive)
+        if(collision.CompareTag(Tags.Player) && 
+            Input.GetKeyDown(KeyCode.E) && !isActive)
         {
             textBox.SetActive(true);
             isActive = true;
