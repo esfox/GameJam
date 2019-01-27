@@ -12,6 +12,7 @@ public class RoomMove : MonoBehaviour {
     CameraMovement cam;
     public Vector2 minPos;
     public Vector2 maxPos;
+    public AudioSource bgm;
 	// Use this for initialization
 	void Start () {
         cam = FindObjectOfType<CameraMovement>();
@@ -27,12 +28,35 @@ public class RoomMove : MonoBehaviour {
     {
         if (collision.CompareTag(Tags.Player))
         {
-            
             collision.transform.position = newPos.position;
             StartCoroutine(placeNameCo());
             cam.maxPos = this.maxPos;
             cam.minPos = this.minPos;
+
+            switch(placeName)
+            {
+                case "Lola Tula":
+                    PlayMusic(AudioManager.AudioType.Maze);
+                    break;
+
+                case "Poblacion":
+                    PlayMusic(AudioManager.AudioType.Calm);
+                    break;
+
+                case "Ciudad":
+                    PlayMusic(AudioManager.AudioType.Ruins);
+                    break;
+
+                case "Batson":
+                    PlayMusic(AudioManager.AudioType.Wetlands);
+                    break;
+            }
         }
+    }
+
+    private void PlayMusic(AudioManager.AudioType type)
+    {
+        GameManager.Instance.AudioManager.PlayBGM(type);
     }
     
     //play automated animation on area change

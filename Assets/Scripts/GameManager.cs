@@ -19,6 +19,12 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    [SerializeField] private AudioManager audioManager;
+    public AudioManager AudioManager
+    {
+        get { return audioManager; }
+    }
+
     private int currentLevel = 0;
     private Level level;
 
